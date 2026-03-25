@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>For My Love ❤️</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background: linear-gradient(135deg, #fdfcfb 0%, #e2d1c3 100%);
+            font-family: 'Poppins', sans-serif;
+            overflow-x: hidden;
+            text-align: center;
+        }
+
+        #main-card {
+            background: rgba(255, 255, 255, 0.9);
+            padding: 40px 20px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            width: 100%;
+            max-width: 450px;
+            position: relative;
+            z-index: 10;
+        }
+
+        #lyrics-display {
+            text-align: left;
+            margin-top: 20px;
+        }
+
+        .line {
+            font-size: 1.3rem;
+            color: #4a4a4a;
+            margin: 10px 0;
+            font-weight: 500;
+            opacity: 0;
+            transform: translateX(-10px);
+            transition: all 0.8s ease-out;
+            border-left: 3px solid #ff4757;
+            padding-left: 15px;
+        }
+
+        .line.show {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .sorry-text {
+            color: #ff4757;
+            font-size: 4rem;
+            font-weight: 900;
+            margin-top: 30px;
+            text-shadow: 2px 4px 10px rgba(0,0,0,0.2);
+            opacity: 0;
+            transition: all 1.5s ease;
+            text-align: center;
+        }
+
+        button {
+            padding: 15px 40px;
+            font-size: 1.2rem;
+            background: #ff4757;
+            color: white;
+            border: none;
+            border-radius: 30px;
+            cursor: pointer;
+            transition: 0.3s;
+            box-shadow: 0 5px 15px rgba(255, 71, 87, 0.4);
+        }
+
+        .heart {
+            position: absolute;
+            color: #ff4d4d;
+            font-size: 20px;
+            animation: floatUp 4s linear forwards;
+            z-index: 1;
+        }
+
+        @keyframes floatUp {
+            0% { transform: translateY(0) scale(1); opacity: 1; }
+            100% { transform: translateY(-100vh) scale(1.5); opacity: 0; }
+        }
+    </style>
+</head>
+<body>
+
+    <audio id="mySong">
+        <source src="video-song-sorry-sorry-pawan-singh-kajal-raghwani-bhojpuri-song-256kbps_Df98RAh1.mp3" type="audio/mpeg">
+    </audio>
+
+    <div id="main-card">
+        <div id="intro">
+            <h1 style="color: #ff4757;">सुनो Bacha...🥺❤️</h1>
+            <button onclick="playSurprise()">यहां पर दबाइए (Click Here)😍</button>
+        </div>
+        <div id="lyrics-display"></div>
+    </div>
+
+    <script>
+        const lyrics = [
+            "नैन तोहर कजरारी 😍",
+            "दिलवा पे करे बमबारी 🤭",
+            "लपकेला कमरिया ऐसे 🫣",
+            "जैसे लपके बा सवारी 🤭",
+            "Sorry, Sorry कह तनी.....😊",
+            "Sorry, Sorry कह तनी......😊",
+            "Baby चॉकलेट दे के 😁",
+            "जान लेबु का हो 🥺",
+            "जान जियते मुआ के ❤️"
+        ];
+
+        function createHeart() {
+            const heart = document.createElement('div');
+            heart.className = 'heart';
+            heart.innerHTML = '❤️';
+            heart.style.left = Math.random() * 100 + 'vw';
+            heart.style.top = '100vh';
+            document.body.appendChild(heart);
+            setTimeout(() => heart.remove(), 4000);
+        }
+
+        let index = 0;
+        let container;
+
+        function showNextLine() {
+            if (index < lyrics.length) {
+                const lineDiv = document.createElement('div');
+                lineDiv.className = 'line';
+                lineDiv.innerText = lyrics[index];
+                container.appendChild(lineDiv);
+                
+                setTimeout(() => lineDiv.classList.add('show'), 50);
+                window.scrollTo(0, document.body.scrollHeight);
+
+                let currentLine = lyrics[index];
+                index++;
+
+                // YAHAN BREAK LOGIC HAI:
+                // Agar "Sorry, Sorry कह तनी......😊" wali line aayi hai, toh 4 second ruko
+                if (currentLine === "Sorry, Sorry कह तनी.....😊") {
+                    setTimeout(showNextLine, 4000); // 4 second ka gap
+                } else {
+                    setTimeout(showNextLine, 2500); // Baki lines ke liye 2.5 second ka gap
+                }
+
+            } else {
+                // End mein SORRY dikhana
+                setTimeout(() => {
+                    const sorryDiv = document.createElement('div');
+                    sorryDiv.className = 'sorry-text';
+                    sorryDiv.innerText = "SORRY ❤️";
+                    container.appendChild(sorryDiv);
+                    setTimeout(() => {
+                        sorryDiv.style.opacity = "1";
+                        window.scrollTo(0, document.body.scrollHeight);
+                    }, 100);
+                    setTimeout(() => {
+                      alert("I Love You! ❤️");
+              }, 1000);
+                }, 1000);
+            }
+        }
+
+        function playSurprise() {
+            const song = document.getElementById('mySong');
+            song.play();
+
+            document.getElementById('intro').style.display = 'none';
+            container = document.getElementById('lyrics-display');
+            
+            setInterval(createHeart, 100);
+            showNextLine();
+        }
+    </script>
+</body>
+</html>

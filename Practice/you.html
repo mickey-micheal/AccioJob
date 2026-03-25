@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Surprise For You ❤️</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #111; /* डार्क थीम ताकि दिल ज्यादा चमके */
+            color: white;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            overflow: hidden;
+        }
+        
+        .heart {
+            color: #ff3b3b;
+            font-size: 120px;
+            animation: beat 1s infinite alternate;
+            text-shadow: 0 0 30px #ff3b3b, 0 0 60px #ff3b3b;
+            margin-bottom: 30px;
+        }
+
+        /* दिल धड़कने का एनिमेशन */
+        @keyframes beat {
+            0% { transform: scale(1); }
+            100% { transform: scale(1.15); }
+        }
+
+        .typing-text {
+            font-size: 28px;
+            text-align: center;
+            letter-spacing: 2px;
+            min-height: 40px;
+            color: #f8f8f8;
+        }
+
+        .final-message {
+            font-size: 45px;
+            font-weight: bold;
+            color: #ff9999;
+            margin-top: 20px;
+            opacity: 0;
+            transform: scale(0.5);
+            animation: popUp 2s forwards 4s; /* यह मैसेज 4 सेकंड बाद आएगा */
+            text-shadow: 0 0 10px #ff9999;
+        }
+
+        @keyframes popUp {
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="heart">❤️</div>
+    <div class="typing-text" id="text"></div>
+    <div class="final-message">I Love You Too! 💕</div>
+
+    <script>
+        const textElement = document.getElementById('text');
+        // आप यहाँ अपनी पसंद की कोई भी लाइन लिख सकते हैं
+        const textToType = "Tum mere din ka sabse khoobsurat hissa ho..."; 
+        let index = 0;
+
+        // टाइपिंग इफ़ेक्ट बनाने का लॉजिक
+        function typeWriter() {
+            if (index < textToType.length) {
+                textElement.innerHTML += textToType.charAt(index);
+                index++;
+                setTimeout(typeWriter, 100); // 100ms की स्पीड से अक्षर टाइप होंगे
+            }
+        }
+
+        // 1 सेकंड बाद टाइपिंग शुरू होगी
+        setTimeout(typeWriter, 1000);
+    </script>
+
+</body>
+</html>

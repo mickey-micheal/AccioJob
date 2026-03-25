@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>For You ❤️</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background: radial-gradient(circle, #ff9a9e 0%, #fad0c4 100%);
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            overflow: hidden;
+            text-align: center;
+        }
+
+        #content {
+            z-index: 10;
+            background: rgba(255, 255, 255, 0.2);
+            padding: 30px;
+            border-radius: 20px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+            backdrop-filter: blur(5px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            width: 80%;
+            max-width: 500px;
+        }
+
+        .lyrics-line {
+            font-size: 1.5rem;
+            color: #d63031;
+            font-weight: bold;
+            margin: 15px 0;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 1s ease;
+            display: none;
+        }
+
+        .lyrics-line.active {
+            display: block;
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        button {
+            padding: 15px 30px;
+            font-size: 1.2rem;
+            background-color: #ff4757;
+            color: white;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(255, 71, 87, 0.4);
+            transition: 0.3s;
+        }
+
+        button:hover {
+            transform: scale(1.1);
+            background-color: #ff6b81;
+        }
+
+        /* Floating Hearts Animation */
+        .heart {
+            position: absolute;
+            color: #ff4757;
+            font-size: 20px;
+            animation: float 4s linear infinite;
+            opacity: 0;
+        }
+
+        @keyframes float {
+            0% { transform: translateY(100vh) rotate(0deg); opacity: 1; }
+            100% { transform: translateY(-10vh) rotate(360deg); opacity: 0; }
+        }
+    </style>
+</head>
+<body>
+
+    <div id="content">
+        <div id="start-screen">
+            <h2 style="color: #c0392b;">एक छोटा सा सरप्राइज... ❤️</h2>
+            <button onclick="startSurprise()">यहाँ क्लिक करो</button>
+        </div>
+
+        <div id="lyrics-container">
+            <p class="lyrics-line">नैन तोहर कजरारी 😍</p>
+            <p class="lyrics-line">दिलवा पे करे बमबारी 🤭</p>
+            <p class="lyrics-line">लपकेला कमरिया ऐसे 🫣</p>
+            <p class="lyrics-line">जैसे लपके बा सवारी 🤭</p>
+            <p class="lyrics-line">Sorry, Sorry कह तनी.....😊</p>
+            <p class="lyrics-line">Sorry, Sorry कह तनी......😊</p>
+            <p class="lyrics-line">Bobby चॉकलेट दे के 😁</p>
+            <p class="lyrics-line">जान लेबु का हो 🥺</p>
+            <p class="lyrics-line">जान जियते मुआ के ❤️</p>
+        </div>
+    </div>
+
+    <script>
+        function createHeart() {
+            const heart = document.createElement('div');
+            heart.classList.add('heart');
+            heart.innerHTML = '❤️';
+            heart.style.left = Math.random() * 100 + 'vw';
+            heart.style.animationDuration = (Math.random() * 2 + 3) + 's';
+            document.body.appendChild(heart);
+            setTimeout(() => { heart.remove(); }, 4000);
+        }
+
+        function startSurprise() {
+            document.getElementById('start-screen').style.display = 'none';
+            const lines = document.querySelectorAll('.lyrics-line');
+            let i = 0;
+
+            // दिलों की बारिश शुरू करें
+            setInterval(createHeart, 300);
+
+            const timer = setInterval(() => {
+                if (i < lines.length) {
+                    if (i > 0) lines[i-1].classList.remove('active'); // पिछली लाइन हटाना (Optional)
+                    lines[i].classList.add('active');
+                    i++;
+                } else {
+                    clearInterval(timer);
+                    // अंत में एक प्यारा मैसेज
+                    setTimeout(() => {
+                        alert("I Love You! ❤️");
+                    }, 1000);
+                }
+            }, 2500); // 2.5 सेकंड का गैप हर लाइन के बीच
+        }
+    </script>
+</body>
+</html>

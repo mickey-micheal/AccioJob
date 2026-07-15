@@ -1,4 +1,5 @@
 const box = document.getElementById("box")
+const ol = document.getElementById("ol")
 
 let p1 = document.createElement("p")
 p1.innerText = "Hello world from p1"
@@ -14,6 +15,7 @@ p3.innerText = "Hello world from p3"
 
 // box.append(p1 ,p2 ,p3)
 
+
 // box.appendChild(p2)
 
 //----------------------
@@ -23,6 +25,8 @@ box.setAttribute("style", "color: red;")
 
 console.log(box.getAttribute("style"))
 console.log(box.getAttribute("class"))
+
+// box.remove()
 
 
 //-----------------------
@@ -50,9 +54,16 @@ const fruits = [
     "DragonFruit",
 ]
 
+let count = 1
+
 for(let item of fruits)
 {
-    
+    const li = document.createElement("li")
+    li.innerText = item
+    li.setAttribute("class", "my")
+    li.setAttribute("id", count)
+    count++
+    ol.append(li)
 }
 
 

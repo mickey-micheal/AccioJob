@@ -14,9 +14,15 @@ console.log(dabba.textContent)
 const pp = document.getElementById("my")
 
 pp.remove()
+  
 
 
-
-const parent = 
+const parent = document.getElementById("parent")
 
 const span = document.createElement("spna")
+
+span.innerText = "hello mickey"
+
+parent.append(span)
+
+

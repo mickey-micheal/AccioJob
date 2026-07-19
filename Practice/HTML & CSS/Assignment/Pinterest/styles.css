@@ -1,0 +1,21 @@
+.hero{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 50px;
+}
+
+img{
+    width: 50vw;
+    height: 50vh;
+    object-fit: cover;
+}
+
+a{
+    background-color: red;
+    color: white;
+    border-radius: 5px;
+    padding: 10px 15px;
+    text-decoration: none;
+}
+

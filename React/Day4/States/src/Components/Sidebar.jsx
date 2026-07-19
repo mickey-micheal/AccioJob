@@ -13,10 +13,10 @@ const Sidebar = () => {
             setsbar(false)
            }}
            style={{height : "100vh", 
-                  width : sbar ? "20vw" : "5vw", 
-                  backgroundColor : "orange"
+                  backgroundColor : "orange",
+                  width : sbar ? "20vw" : "5vw"
             }}>
-
+                
         </aside>
     )
 }

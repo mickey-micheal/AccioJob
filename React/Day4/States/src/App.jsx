@@ -13,20 +13,11 @@ const App = () => {
 
       <nav>
 
-        <button onClick={(e) => {
-          console.log(e)
-          if(!Dark)
-          {
-            e.target.innerText = "🌅"
-            setDark(!Dark)
-          }
-          else
-          {
-            e.target.innerText = "🌃"
-            setDark(Dark)
-          }
-          
-        }}>🌃</button>
+        <button onClick={() => {
+          setDark(!Dark)
+        }}>
+          {Dark ? "Light" : "Dark"}
+          </button>
 
       </nav>
 

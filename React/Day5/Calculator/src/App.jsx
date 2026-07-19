@@ -1,10 +1,21 @@
-import Demo from "./Components/Demo";
+import Calculator from "./Components/Calculator";
+// import Demo from "./Components/Demo";
 
 
 const App = () => {
   return (
-    <div >
-        <Demo/>
+    <div 
+    style={{height : "100vh",
+           display : "flex", 
+           justifyContent : "center",
+           alignItems : "center"
+
+    }}>
+
+      <Calculator/>
+
+        {/* <Demo/> */}
+
     </div>
   )
 }

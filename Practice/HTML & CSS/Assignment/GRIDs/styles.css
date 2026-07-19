@@ -1,0 +1,14 @@
+.container{
+    width: 600px;
+    border: 5px solid rgb(4, 255, 4);
+    background-color: rgb(41, 0, 0);
+}
+
+.row{
+    border: 5px solid rgb(255, 188, 188);
+    height: 200px;
+}
+
+.row > [class*="col-"]{
+    border: 2px dotted rgb(38, 38, 43);
+}

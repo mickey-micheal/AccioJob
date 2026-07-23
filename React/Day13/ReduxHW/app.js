@@ -4,24 +4,27 @@ const countp = "COUNT_PLUE"
 const countm = "COUNT_MINUS"
 const countr = "COUNT_REST"
 
-function COUNT_PLUS()
+function COUNT_PLUS(q)
 {
     return{
-        type : countp
+        type : countp,
+        payload : q || 1
     }
 }
 
 function COUNT_REST()
 {
     return{
-        type : countr
+        type : countr,
+        
     }
 }
 
-function COUNT_MINUS()
+function COUNT_MINUS(q)
 {
     return{
-        type : countm
+        type : countm,
+        payload : q || 1
     }
 }
 
@@ -34,15 +37,15 @@ const countReducer = (state = initalCount , action) => {
     {
         case countp : 
              return {
-                Count : state.Count + 1
+                Count : state.Count + action.payload
              }
         case countr :
             return {
                 Count : 0
-            }
+            } 
         case countm : 
              return {
-                Count : state.Count - 1
+                Count : state.Count - action.payload
              }    
         default :
              return state 
@@ -55,7 +58,7 @@ Store.subscribe(() => {
     console.log(Store.getState())
 })
 
+Store.dispatch(COUNT_PLUS(15))
 Store.dispatch(COUNT_PLUS())
-Store.dispatch(COUNT_PLUS())
-Store.dispatch(COUNT_MINUS())
+Store.dispatch(COUNT_MINUS(6))
 Store.dispatch(COUNT_REST())

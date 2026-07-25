@@ -1,17 +1,25 @@
 import { useSelector } from "react-redux"
 
 const Display = () => {
-  const data = useSelector((store) => store)
+
+  const data = useSelector((store) => store.list.data)
 
   return (
+    
     <div>
-      <ul>
-        {data.map((item, index) => {
-          return <li key={index}>{item}</li>
-        })}
-      </ul>
+      {data.map((item, index) => {
+        return (
+          <div key={index}>
+
+            <h1>{item.title}</h1>
+            <p>{item.disc}</p>
+
+          </div>
+        )
+      })}
     </div>
-  );
-};
+   
+  )
+}
 
 export default Display

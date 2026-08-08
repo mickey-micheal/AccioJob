@@ -1,33 +1,36 @@
-import { useRef } from "react"
-import {useDispatch, useSelector} from "react-redux"
-import {addtext} from "./Utils/listSlice"
+import { useRef } from "react"  
+import { useSelector, useDispatch } from "react-redux"
+import { addtext } from "./Utils/ListSlice"
 
 const App = () => {
 
-  const dispatch =  useDispatch()
-  const data = useSelector(store => store.list)
-  const ipref = useRef(data)
-  
+  const data = useSelector((store) => {
+    return store.List
+  })
+  const dis = useDispatch()
+  const ipref = useRef()
 
   return (
     <div>
       <input ref={ipref} type="text" />
-      <button onClick={() => {
-        dispatch(addtext(ipref.current.value))
-        ipref.current.value = ""
-      }}>Click</button>
 
+      <button onClick={() => {
+
+        if(!ipref.current.value) return 
+
+        dis(addtext(ipref.current.value))
+        ipref.current.value = ""
+      }}>Add</button>
 
       <ul>
-        {data.map((item,index) => {
-          return (
-            <li key={index}>{item}</li>
-          )
-        })}
+        {
+          data.map((item,index) => {
+            return <li key={index}>{item}</li>
+          })
+        }
       </ul>
 
     </div>
-    
   )
 }
 

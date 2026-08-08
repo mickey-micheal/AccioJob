@@ -1,15 +1,27 @@
-import { Link } from "react-router-dom";
+import { useState } from "react"
+import Apply from "./Components/Apply"
 
 function App() {
+
+  const [data , setDta] = useState(false)
+
   return (
-    <div className="bg-red-600">
+
+    <div className="flex gap-2">
       <h1>Mickey</h1>
 
-      <div>
-        <Link>A</Link>
-        <Link>B</Link>
-        <Link>C</Link>
-      </div>
+      <br />
+
+      <button onClick={() => {
+      setDta(!data)
+     }}>click</button>
+
+
+
+
+     {data && <Apply/>}
+
+     
 
     </div>
   )

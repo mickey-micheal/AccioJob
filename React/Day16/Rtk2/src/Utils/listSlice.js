@@ -1,14 +1,14 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-const listSlice = createSlice({
-    name : "text",
+const ListSlice = createSlice({
+    name : "MyList",
     initialState : [],
     reducers : {
-        addtext : (state , action) => {
-            return [...state, action.payload]
+        addtext : (state, action) => {
+            return [...state , action.payload]
         }
     }
 })
 
-export default listSlice.reducer
-export const {addtext} = listSlice.actions
+export default ListSlice.reducer
+export const {addtext} = ListSlice.actions

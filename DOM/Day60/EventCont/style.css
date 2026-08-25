@@ -1,0 +1,38 @@
+body{
+    background-color: aquamarine;
+    display: flex;
+    justify-content: center;
+    
+}
+
+#div1{
+    width: 20vw; 
+    height: 30vh; 
+    border: 1px solid black; 
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column; 
+    justify-content: center; 
+    align-items: center;
+}
+
+#count{
+    width: 200px;
+    border: 1px solid rgb(14, 27, 148);
+    border-radius: 5px;
+    margin-bottom: 20px;
+    padding-left:10px ;
+
+
+}
+
+#btn{
+    display: flex;
+    gap: 20px;
+}
+
+button{
+    width: 50px;
+    border-radius: 5px;
+
+}

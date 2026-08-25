@@ -1,0 +1,21 @@
+#box{
+    width: 100vw;
+    height: 60vh;
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 10px;
+}
+
+.card{
+    width: 18vw;
+    height: 200px;
+    background-color: bisque;
+
+}
+
+#cart{
+    width: 50vw;
+    height: 20vh;
+    border: 5px solid black;
+    overflow: scroll;
+}

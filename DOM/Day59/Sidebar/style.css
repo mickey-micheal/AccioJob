@@ -1,0 +1,18 @@
+*{
+    margin: 0px;
+    padding: 0px;
+}
+
+#side{
+    height: 100vh;
+    background-color: rgb(25, 149, 16);
+    width: 5vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.span{
+    display: none;
+}

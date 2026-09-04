@@ -4,8 +4,14 @@ const app = express()
 const { ProductsRouter } = require("./routes/Product.route")
 const { UsersRouter } = require("./routes/User.route")
 
-app.use("/api",UsersRouter)
-app.use("/api",ProductsRouter)
+app.use("/api/users",UsersRouter)
+app.use("/api/products",ProductsRouter)
+
+app.use((req, res) => {
+    res.json({
+        er : "Not Found"
+    })
+})
 
 
 const PORT = process.env.PORT || 8080

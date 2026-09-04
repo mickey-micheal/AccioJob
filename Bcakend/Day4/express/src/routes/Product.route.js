@@ -274,7 +274,7 @@ const products = [
   }
 ]
 
-router.get("/products", (req, res) => {
+router.get("/", (req, res) => {
     try {
         res.json({
             data : products
@@ -287,14 +287,14 @@ router.get("/products", (req, res) => {
     }
 })
 
-router.delete("/products", (req, res) => {
+router.delete("/", (req, res) => {
     try {
         const obj = products.pop()
         res.json({
             msg : "Product Deleted",
             delproduct : obj
         })
-    } 
+    }
     catch (error) {
         res.json({
             er : error.massage

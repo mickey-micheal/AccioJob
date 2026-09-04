@@ -305,7 +305,7 @@ const users = [
 ]
 
 
-router.get("/users", (req, res) => {
+router.get("/", (req, res) => {
     try {
         res.json({
             data : users
@@ -317,7 +317,7 @@ router.get("/users", (req, res) => {
     }
 })
 
-router.delete("/users", (req, res) => {
+router.delete("/", (req, res) => {
     try {
         const obj = users.pop()
         res.json({
